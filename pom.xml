@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>tw.fengqing.spring.springbucks</groupId>
+	<artifactId>customer-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>customer-service</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<!-- Java 版本設定 - 與 Spring Boot 3.2.0 相容 -->
+		<java.version>21</java.version>
+		
+		<!-- Spring Cloud 版本管理 - 與 Spring Boot 3.2.0 相容 -->
+		<spring-cloud.version>2023.0.0</spring-cloud.version>
+		
+		<!-- 第三方依賴版本管理 -->
+		<!-- Joda Money 版本 - 用於貨幣處理，選擇穩定版本確保相容性 -->
+		<joda-money.version>2.0.2</joda-money.version>
+		
+		<!-- Apache Commons Lang3 版本 - 工具類庫 -->
+		<commons-lang3.version>3.12.0</commons-lang3.version>
+		
+		<!-- Apache HttpClient5 版本 - HTTP 客戶端 -->
+		<httpclient5.version>5.2.1</httpclient5.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring Boot 核心依賴 - 使用 Spring Boot 預設版本 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Spring Cloud Bootstrap - 使用 Spring Cloud 的配置管理 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
+
+		<!-- Spring Boot Actuator - 用於監控和管理 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!-- Spring Cloud Consul Discovery - 服務註冊與發現 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
+		</dependency>
+
+		<!-- Joda Money - 貨幣處理庫，版本由 dependencyManagement 管理 -->
+		<dependency>
+			<groupId>org.joda</groupId>
+			<artifactId>joda-money</artifactId>
+		</dependency>
+
+		<!-- Apache Commons Lang3 - 工具類庫，版本由 dependencyManagement 管理 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<!-- HTTP 客戶端依賴 - 版本由 dependencyManagement 管理 -->
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+		</dependency>
+
+		<!-- Lombok - 程式碼生成工具，使用 Spring Boot 預設版本 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<!-- Spring Boot Test - 測試依賴 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring Cloud 依賴管理 - 使用與 Spring Boot 3.2.0 相容的版本 -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
+			<!-- 自定義版本依賴管理 -->
+			<!-- Joda Money 版本覆蓋 - 選擇穩定版本 2.0.2 確保與專案相容性 -->
+			<dependency>
+				<groupId>org.joda</groupId>
+				<artifactId>joda-money</artifactId>
+				<version>${joda-money.version}</version>
+			</dependency>
+			
+			<!-- Apache Commons Lang3 版本覆蓋 - 選擇穩定版本 3.12.0 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			
+			<!-- Apache HttpClient5 版本覆蓋 - 選擇穩定版本 5.2.1 -->
+			<dependency>
+				<groupId>org.apache.httpcomponents.client5</groupId>
+				<artifactId>httpclient5</artifactId>
+				<version>${httpclient5.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
